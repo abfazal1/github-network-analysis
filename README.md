@@ -6,9 +6,7 @@ The central question:
 
 > How closely do connectivity-based communities align with structural similarity learned through graph embeddings?
 
-The way we define and detect community can meaningfully change the conclusions we draw about a network.
-
-In many real-world systems — including social media platforms, digital marketplaces, and collaboration networks — different community detection methods can produce different groupings, influence patterns, and interpretations of behaviour.
+Modern digital ecosystems such as social media platforms, digital marketplaces, and collaboration networks often contain rich community structures, influence patterns, or other community-based interpretations of observed user behaviour. However, the way we define and detect community can meaningfully change the conclusions we draw about a network.
 
 This project illustrates how the choice of method shapes the communities we observe, and therefore the story we tell about how a network is organised.
 
@@ -60,7 +58,7 @@ Key takeaways:
 - The network is strongly hub-driven: a small number of developers account for a disproportionate share of mutual follower connections. 
 - Despite this concentration, removing the two most central nodes does not meaningfully fragment the network. 
 - Connectivity-based partitioning (Kernighan–Lin) forces a two-way split, but the resulting groups are not clearly separated by developer type.
-- When these KL communities are projected into embedding space, they appear heavily mixed, suggesting that the partition does not reflect deeper structural similarity. 
+- When these KL communities are projected into a graph embedding space, they appear heavily mixed, suggesting that the partition does not reflect deeper structural similarity. 
 - In contrast, clustering directly on Node2Vec embeddings produces clearer, more cohesive groups in reduced-dimensional space (see PCA visualizations below).
 
 *Connectivity-Based Partition (Kernighan–Lin)*
