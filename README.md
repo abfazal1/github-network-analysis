@@ -1,9 +1,11 @@
 # Community Detection in a GitHub Developer Network
 
+![KL_sample](images/kl_sample.png)
+
 ## Summary
 
 - Analysis of a 37k-node GitHub developer network.
-- Compares graph partitioning with embedding-based clustering.
+- Compares graph partitioning with embedding based clustering.
 - Visually demonstrates how modelling choices shape the communities we observe in complex networks.
 
 ---
