@@ -1,5 +1,13 @@
 # Community Detection in a GitHub Developer Network
 
+## Summary
+
+- Analysis of a 37k-node GitHub developer network.
+- Compares graph partitioning with embedding-based clustering.
+- Visually demonstrates how modelling choices shape the communities we observe in complex networks.
+
+---
+
 This project investigates structural patterns in a large GitHub developer social network using graph analytics and unsupervised learning techniques.
 
 The central question:
@@ -57,7 +65,7 @@ Key takeaways:
 
 - The network is strongly hub-driven: a small number of developers account for a disproportionate share of mutual follower connections. 
 - Despite this concentration, removing the two most central nodes does not meaningfully fragment the network. 
-- Connectivity-based partitioning (Kernighan–Lin) forces a two-way split, but the resulting groups are not clearly separated by developer type.
+- Connectivity-based partitioning (Kernighan–Lin or KL) forces a two-way split, but the resulting groups are not clearly separated by developer type.
 - When these KL communities are projected into a graph embedding space, they appear heavily mixed, suggesting that the partition does not reflect deeper structural similarity. 
 - In contrast, clustering directly on Node2Vec embeddings produces clearer, more cohesive groups in reduced-dimensional space (see PCA visualizations below).
 
