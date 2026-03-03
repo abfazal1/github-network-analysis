@@ -12,7 +12,7 @@
 
 ## What is the project about?
 
-Online platforms such as GitHub, Instagram, and LinkedIn are built on networks of connections. We often talk about “communities,” “influence groups,” or “clusters” of users. But what exactly is a community?
+Social platforms such as GitHub, Instagram, and LinkedIn are built on networks of connections. We often talk about “communities,” “influence groups,” or “clusters” of users. But what exactly is a community?
 
 There is rarely a single answer. This project shows that the way we define and detect communities can fundamentally change how we interpret a network.
 
