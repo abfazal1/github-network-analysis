@@ -10,15 +10,24 @@
 
 ---
 
-This project investigates structural patterns in a large GitHub developer social network using graph analytics and unsupervised learning techniques.
+## What is the project about?
+
+Online platforms such as GitHub, Instagram, and LinkedIn are built on networks of connections. We often talk about “communities,” “influence groups,” or “clusters” of users. But what exactly is a community?
+
+There is rarely a single answer. This project shows that the way we define and detect communities can fundamentally change how we interpret a network.
+
+Using a large GitHub developer network, we compare two approaches:
+
+- A **connectivity-based method**, which partitions the graph by minimizing cross-group links.
+- An **embedding-based method**, which groups developers based on structural similarity within the network.
+
+Although both methods operate on the same data, they produce meaningfully different groupings and therefore yield different narratives about how the network is organized.
 
 The central question:
 
 > How closely do connectivity-based communities align with structural similarity learned through graph embeddings?
 
-Modern digital ecosystems such as social media platforms, digital marketplaces, and collaboration networks often contain rich community structures, influence patterns, or other community-based interpretations of observed user behaviour. However, the way we define and detect community can meaningfully change the conclusions we draw about a network.
-
-This project illustrates how the choice of method shapes the communities we observe, and therefore the story we tell about how a network is organised.
+Understanding this distinction matters because it affects how we approach real-world tasks such as user segmentation, recommendation systems, and influence detection.
 
 ---
 
@@ -61,15 +70,15 @@ The analysis combines classical network science with modern representation learn
 
 ## Key Findings
 
-This GitHub network appears densely interconnected, with overlapping follower communities rather than sharply divided blocks. Many highly connected developers share large portions of their follower base, creating gradual transitions between groups rather than clear boundaries.
+This GitHub network is densely interconnected, with overlapping follower communities rather than sharply separated groups. Highly connected developers share large portions of their follower base, creating gradual transitions between regions of the network.
 
 Key takeaways:
 
-- The network is strongly hub-driven: a small number of developers account for a disproportionate share of mutual follower connections. 
-- Despite this concentration, removing the two most central nodes does not meaningfully fragment the network. 
-- Connectivity-based partitioning (Kernighan–Lin or KL) forces a two-way split, but the resulting groups are not clearly separated by developer type.
-- When these KL communities are projected into a graph embedding space, they appear heavily mixed, suggesting that the partition does not reflect deeper structural similarity. 
-- In contrast, clustering directly on Node2Vec embeddings produces clearer, more cohesive groups in reduced-dimensional space (see PCA visualizations below).
+- The network is strongly hub-driven: a small number of developers account for a disproportionate share of mutual follower connections.
+- Even after removing the two most influential nodes, the overall network remains largely intact, indicating structural robustness.
+- Connectivity-based partitioning (Kernighan–Lin or KL) forces a clean two-way split of the graph. However, this split does not align cleanly with developer type (Web vs Machine Learning).
+- When we look at the KL partition through another structural lens, the two groups are not as clearly separated as the initial split might suggest. Many developers placed into different KL communities still occupy similar structural similarities across the broader network.
+- By contrast, grouping developers based on their overall pattern of connections produces clusters that appear more clearly distnguishiable. In other words, developers who “sit” in similar parts of the network tend to be grouped together, even if they are assigned to different communities under a connectivity-based split.
 
 *Connectivity-Based Partition (Kernighan–Lin)*
 
@@ -79,20 +88,25 @@ Key takeaways:
 
 ![PCA KMeans](images/pca_kmeans.png)
 
-More broadly, this highlights an important modelling choice:
 
-- Connectivity-based partitioning (Kernighan–Lin) is useful when the objective is to divide the network into groups with relatively few cross-connections. It focuses strictly on how follower relationships are arranged.
+### So what does it all mean?
 
-- Embedding-based clustering is useful when the objective is to group developers who occupy similar regions of the network or share similar connection patterns, even if those groups overlap in terms of direct follower links.
+This comparison highlights a simple but important idea: community membership depends on how we choose to define it.
 
-In broader network settings — such as social media, citation graphs, or recommendation systems — this modelling choice can directly affect tasks like influence detection, segmentation, and recommendation quality.
+One approach focuses on drawing clean boundaries by reducing connections between groups. Another approach focuses on grouping users who occupy similar structural positions within the network.
+
+Which approach is more useful depends on the question we are trying to answer:
+- If the goal is to divide a network into clearly separated groups, for example, to identify factions or detect polarization, a connectivity-based method may be more appropriate.
+- If the goal is to understand which users play similar roles, behave similarly, or occupy comparable positions within the broader structure, an embedding-based approach may be more informative.
+
+Ultimately, meaningful network analysis begins with a clear objective. Different methods reveal different patterns, and **the choice of method should follow the question we care about.**
 
 ---
 
 ## Repository Structure
 
 - `data/` — raw dataset files  
-- `outputs/` — generated embeddings (intermediate CSV files)  
+- `outputs/` — generated embeddings (intermediate CSV file)  
 - `images/` — visualizations used in the README  
 - `github_network_analysis.ipynb` — main analysis notebook  
 - `README.md`
