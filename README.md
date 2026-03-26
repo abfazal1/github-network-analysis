@@ -70,15 +70,19 @@ The analysis combines classical network science with modern representation learn
 
 ## Key Findings
 
-This GitHub network is densely interconnected, with overlapping follower communities rather than sharply separated groups. Highly connected developers share large portions of their follower base, creating gradual transitions between regions of the network.
+The GitHub developer network is dense and hub-driven, with gradual transitions between regions rather than sharp boundaries.
 
-Key takeaways:
+- **Hub dominance:** A small number of developers account for a disproportionate share of mutual follower connections.
+- **Structural robustness:** Removing the two most influential nodes leaves the overall network largely intact.
+- **Connectivity-based partitioning (Kernighan–Lin):** Produces a clean two-way split, but this split does not align clearly with developer type (Web vs Machine Learning).
+- **Embedding-based clustering (Node2Vec + KMeans):** Groups developers by structural role rather than direct connections, producing clusters that appear more clearly separable in embedding space.
 
-- The network is strongly hub-driven: a small number of developers account for a disproportionate share of mutual follower connections.
-- Even after removing the two most influential nodes, the overall network remains largely intact, indicating structural robustness.
-- Connectivity-based partitioning (Kernighan–Lin or KL) forces a clean two-way split of the graph. However, this split does not align cleanly with developer type (Web vs Machine Learning).
-- When we look at the KL partition through another structural lens, the two groups are not as clearly separated as the initial split might suggest. Many developers placed into different KL communities still occupy similar structural similarities across the broader network.
-- By contrast, grouping developers based on their overall pattern of connections produces clusters that appear more clearly distnguishiable. In other words, developers who “sit” in similar parts of the network tend to be grouped together, even if they are assigned to different communities under a connectivity-based split.
+### How do the two methods compare?
+
+When the KL partition is viewed through the lens of graph embeddings, the two groups are less distinct than the split implies — many developers assigned to different KL communities occupy similar positions in the broader network.
+
+By contrast, embedding-based clusters capture developers who "sit" in structurally similar parts of the network, even if they are separated under the connectivity-based split.
+
 
 *Connectivity-Based Partition (Kernighan–Lin)*
 
@@ -93,7 +97,7 @@ Key takeaways:
 
 This comparison highlights a simple but important idea: community membership depends on how we choose to define it.
 
-One approach focuses on drawing clean boundaries by reducing connections between groups. Another approach focuses on grouping users who occupy similar structural positions within the network.
+One approach draws clean boundaries by minimising cross-group connections. Another groups users who occupy similar structural positions, regardless of whether they are directly connected.
 
 Which approach is more useful depends on the question we are trying to answer:
 - If the goal is to divide a network into clearly separated groups, for example, to identify factions or detect polarization, a connectivity-based method may be more appropriate.
