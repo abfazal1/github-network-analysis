@@ -1,6 +1,6 @@
 # Community Detection in a GitHub Developer Network
 
-![KL_sample](images/kl_sample.png)
+![Intro](images/intro.png)
 
 ## Summary
 
@@ -74,8 +74,12 @@ The GitHub developer network is dense and hub-driven, with gradual transitions b
 
 - **Hub dominance:** A small number of developers account for a disproportionate share of mutual follower connections.
 - **Structural robustness:** Removing the two most influential nodes leaves the overall network largely intact.
-- **Connectivity-based partitioning (Kernighan–Lin):** Produces a clean two-way split, but this split does not align clearly with developer type (Web vs Machine Learning).
+- **Connectivity-based partitioning (Kernighan–Lin):** Produces a clean two-way split (see below) but this split does not align clearly with developer type (Web vs Machine Learning).
 - **Embedding-based clustering (Node2Vec + KMeans):** Groups developers by structural role rather than direct connections, producing clusters that appear more clearly separable in embedding space.
+
+*KL Communities Sample*
+
+![KL_sample](images/kl_sample.png)
 
 ### How do the two methods compare?
 
@@ -121,5 +125,4 @@ Ultimately, meaningful network analysis begins with a clear objective. Different
 
 1. Create a Python environment (e.g., conda)
 2. Install dependencies `pip install pandas numpy networkx matplotlib scikit-learn node2vec`
-
 3. Run the notebook from top to bottom.
